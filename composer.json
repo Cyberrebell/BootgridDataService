@@ -1,0 +1,30 @@
+{
+    "name": "cyberrebell/bootgrid-data-service",
+    "description": "zf2+doctrine component to provide doctrine data as fitting array to use them with jQuery bootgrid",
+    "authors": [
+        {
+            "name": "Cyberrebell",
+            "email": "chainsaw75@web.de"
+        }
+    ],
+    "type": "library",
+    "keywords": [
+        "zf2",
+        "zend",
+        "doctrine",
+        "entity",
+        "annotation",
+        "jQuery",
+        "bootgrid"
+    ],
+    "license": "GPL-3.0",
+    "require": {
+        "php": ">=5.4.36",
+        "cyberrebell/doctrine-entity-reader": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "BootgridDataService\\": "library/"
+        }
+    }
+}
