@@ -5,7 +5,6 @@ namespace BootgridDataService;
 use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineEntityReader\EntityReader;
 use Zend\Stdlib\Parameters;
-use Doctrine\ORM\QueryBuilder;
 
 class BootgridDataService
 {
@@ -33,8 +32,11 @@ class BootgridDataService
 		}
 		if (!empty($searchPhrase) && !empty($this->searchableProperties)) {
 			foreach ($this->searchableProperties as $searchableProperty) {
-				//add filter check
+				$queryBuilder->orWhere(
+					$queryBuilder->expr()->like('u.' . $searchableProperty, '?1')
+				);
 			}
+			$queryBuilder->setParameter(1, '%' . $searchPhrase . '%');
 		}
 		$query = $queryBuilder->getQuery();
 		$results = $query->getResult();
