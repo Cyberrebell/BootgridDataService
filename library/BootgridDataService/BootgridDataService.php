@@ -48,7 +48,11 @@ class BootgridDataService
 			foreach ($this->getProperties() as $property) {
 				$propertyName = $property->getName();
 				$getter = 'get' . ucfirst($propertyName);
-				$row[$propertyName] = $result->$getter();
+				$value = $result->$getter();
+				if ($value instanceof \DateTime) {
+					$value = $value->format('d.M.Y H:m:s');
+				}
+				$row[$propertyName] = $value;
 			}
 			
 			$rows[] = $row;
